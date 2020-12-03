@@ -14,6 +14,7 @@ namespace Day1
         private static readonly ILogger log = LoggerFactory.Create(builder => builder.AddConsole()).CreateLogger<Program>();
         static void Main(string[] args)
         {
+            var stopwatch=Stopwatch.StartNew();
             var inputs = new Queue<int>( File.ReadAllLines("input.txt").Select(int.Parse));
             var (item1, item2) = Find2020Part1(inputs);
             var multiplier = item1 * item2;
@@ -21,6 +22,7 @@ namespace Day1
             var (item21, item22, item23) = Find2020Part2(inputs);
             multiplier = item21 * item22 * item23;
             log.LogInformation($"The two entries are {item21} {item22} {item23} and multiply to {multiplier}");
+            log.LogInformation($"it took {stopwatch.ElapsedMilliseconds}");
         }
 
         private static Tuple<int, int> Find2020Part1(Queue<int> inputs)
